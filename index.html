@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- ============================================================
+     head.html — 全デモ共通の <head> 不変ブロック（SEO）。
+     各デモの <head> に必ず含める。{{...}} は案件情報で差し替え。
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ユナイテッド豊島ワンニャン動物病院｜動物病院</title>
+<meta name="description" content="豊島区のユナイテッド豊島ワンニャン動物病院。犬猫専門の安心できる診療と優しいケアで、地域の大切な家族をサポートします。ご予約はこちらから。">
+<link rel="canonical" href="https://mochigoma09.github.io/demo-a6a63a/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ユナイテッド豊島ワンニャン動物病院">
+<meta property="og:title" content="ユナイテッド豊島ワンニャン動物病院｜動物病院">
+<meta property="og:description" content="豊島区のユナイテッド豊島ワンニャン動物病院。犬猫専門の安心できる診療と優しいケアで、地域の大切な家族をサポートします。ご予約はこちらから。">
+<meta property="og:url" content="https://mochigoma09.github.io/demo-a6a63a/">
+<meta property="og:image" content="">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ユナイテッド豊島ワンニャン動物病院｜動物病院">
+<meta name="twitter:description" content="豊島区のユナイテッド豊島ワンニャン動物病院。犬猫専門の安心できる診療と優しいケアで、地域の大切な家族をサポートします。ご予約はこちらから。">
+<meta name="twitter:image" content="">
+
+<!-- 構造化データ（VeterinaryCare は preset の schema.orgサブタイプ。住所/電話は実値へ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://mochigoma09.github.io/demo-a6a63a/#org", "name": "ユナイテッド豊島ワンニャン動物病院", "url": "https://mochigoma09.github.io/demo-a6a63a/" },
+    { "@type": "WebSite", "@id": "https://mochigoma09.github.io/demo-a6a63a/#site", "url": "https://mochigoma09.github.io/demo-a6a63a/", "name": "ユナイテッド豊島ワンニャン動物病院", "publisher": { "@id": "https://mochigoma09.github.io/demo-a6a63a/#org" } },
+    { "@type": "VeterinaryCare", "@id": "https://mochigoma09.github.io/demo-a6a63a/#biz", "name": "ユナイテッド豊島ワンニャン動物病院", "url": "https://mochigoma09.github.io/demo-a6a63a/", "telephone": "03-5396-1212", "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "豊島区", "streetAddress": "南大塚３丁目４３−５ ウィルテラス南大塚 202" } }
+  ]
+}
+</script>
+
+<!-- フォント（コンセプトで差し替え） / 土台CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base/base.css">
+<!-- ↑ 案件コンセプトのトークンは、この後に <style>
+/* ============================================================
+   base.css — 全デモ共通の「不変の土台」（品質の担保。見た目の個性はここに持たせない）
+   各デモHTMLは必ずこれを読み込み、レイアウト/世界観は自由に作る。
+   固定するのは：リセット / トークンの“契約”（変数名）/ a11y / 再利用部品 のみ。
+   ============================================================ */
+
+/* --- デザイントークンの契約（値は案件コンセプトで :root を上書きする） --- */
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent:  #b89150;
+  --color-text:    #2a2e35;
+  --color-bg:      #ffffff;
+  --color-surface: #f5f7fa;
+  --color-line:    rgba(0, 0, 0, 0.12);
+  --font-heading:  "Noto Serif JP", serif;
+  --font-body:     system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  --radius:        14px;
+  --container:     1120px;
+}
+
+/* --- reset（wp-theme-starter から移植） --- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+img, svg, video, picture { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.4; }
+ul, ol { list-style: none; padding: 0; }
+
+/* --- a11y（不変） --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* --- 再利用部品（配色/形はトークン依存＝案件で変わる。構造だけ共通） --- */
+.l-wrapper { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 20px; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 32px; font-weight: 700; border-radius: 999px; color: #fff; background: var(--color-primary); transition: transform .25s, box-shadow .25s; }
+.c-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+/* 全画面ハンバーガー（1024px以下） */
+.c-hamburger { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 1001; }
+.c-hamburger__bars, .c-hamburger__bars::before, .c-hamburger__bars::after { content: ""; display: block; width: 24px; height: 2px; background: var(--color-text); transition: transform .3s, opacity .3s; }
+.c-hamburger__bars { position: relative; }
+.c-hamburger__bars::before { position: absolute; top: -7px; left: 0; }
+.c-hamburger__bars::after  { position: absolute; top: 7px;  left: 0; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars { background: transparent; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::before { transform: translateY(7px) rotate(45deg); }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+.c-nav { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; font-family: var(--font-heading); font-size: 1.2rem; }
+.c-nav.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 1025px) {
+  .c-hamburger { display: none; }
+  .c-nav { position: static; flex-direction: row; gap: 32px; background: none; backdrop-filter: none; opacity: 1; visibility: visible; font-size: 1rem; }
+}
+
+/* スクロールリビール（nav.jsがJSで付与する。JS無効環境では何も付かず常に表示） */
+.js-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal.is-inview { opacity: 1; transform: none; }
+
+/* 追従フローティングCTA（1024px以下） */
+.c-floating-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 800; display: flex; justify-content: center; padding: 0 16px 14px; pointer-events: none; }
+.c-floating-cta .c-btn { pointer-events: auto; width: 100%; max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+body { padding-bottom: 84px; } /* CTA分の余白 */
+@media (min-width: 1025px) { .c-floating-cta { display: none; } body { padding-bottom: 0; } }
+
+</style>
+<style>:root{ --color-primary: ...; }</style> で上書きする -->
+
+<style>
+/* デザイントークン上書き */
+:root {
+  --color-primary: #6B8E6A;
+  --color-accent:  #E09F7D;
+  --color-surface: #F7F4EB;
+  --color-text:    #3A332B;
+  --font-heading:  'Kosugi Maru', sans-serif;
+  --font-body:     'Noto Sans JP', sans-serif;
+  --radius:        4px;
+}
+
+/* 基本スタイル */
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); line-height: 1.2; }
+h2 { font-size: clamp(2rem, 5vw + 1rem, 3.5rem); line-height: 1.3; margin-bottom: 1em; }
+h3 { font-size: clamp(1.5rem, 3vw + 1rem, 2.2rem); line-height: 1.4; }
+p { font-size: clamp(1rem, 1.5vw + 0.5rem, 1.15rem); line-height: 1.8; }
+
+.l-wrapper {
+  padding-block: 60px;
+}
+@media (min-width: 768px) {
+  .l-wrapper {
+    padding-block: 90px;
+  }
+}
+
+/* ヘッダー */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+.site-logo {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2vw + 0.8rem, 1.8rem);
+  color: var(--color-primary);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.c-nav a {
+  color: var(--color-text);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  transition: background-color .2s;
+}
+.c-nav a:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+@media (max-width: 1024px) {
+  .c-nav.is-open {
+    background: color-mix(in srgb, var(--color-surface) 95%, transparent);
+  }
+}
+
+/* ヒーローセクション */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding-block: 80px;
+  overflow: hidden;
+  background-color: var(--color-primary);
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url(https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMGNhdCUyMHZldCUyMHZpc2l0fGVufDB8MHx8fDE3ODQ0NTc2MjV8MA&ixlib=rb-4.1.0&q=80&w=1080) center/cover no-repeat;
+  filter: brightness(0.7);
+  z-index: 1;
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 20px;
+  text-align: right; /* 非対称レイアウト */
+  color: #fff;
+}
+.hero__content h1 {
+  font-size: clamp(3rem, 8vw + 1rem, 5.5rem);
+  color: #fff;
+  margin-bottom: 0.3em;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+.hero__content p {
+  font-size: clamp(1.1rem, 2vw + 0.5rem, 1.4rem);
+  margin-bottom: 2em;
+  max-width: 600px;
+  margin-left: auto;
+}
+.hero__cta .c-btn {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+.hero__cta .c-btn:hover {
+  background-color: color-mix(in srgb, var(--color-accent) 80%, white);
+}
+.hero::after { /* curve motif */
+  content: '';
+  position: absolute;
+  bottom: -2px; /* overlap to hide anti-aliasing */
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-surface);
+  clip-path: ellipse(150% 100% at 50% 100%);
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .hero::after {
+    height: 180px;
+  }
+}
+
+/* problem セクション */
+.problem {
+  background-color: var(--color-surface);
+  padding-top: 60px; /* Adjust for hero curve */
+}
+.problem__inner {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .problem__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+.problem__text h2 {
+  color: var(--color-primary);
+  margin-bottom: 1em;
+}
+.problem__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.problem__item {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.problem__item::before {
+  content: '✓';
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.problem__item p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* menu セクション */
+.menu {
+  background-color: color-mix(in srgb, var(--color-surface) 80%, white);
+  position: relative;
+  overflow: hidden;
+}
+.menu::before { /* curve motif */
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-surface);
+  clip-path: ellipse(150% 100% at 50% 0%);
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .menu::before {
+    height: 180px;
+  }
+}
+.menu__inner {
+  position: relative;
+  z-index: 2;
+}
+.menu h2 {
+  text-align: center;
+  margin-bottom: 2em;
+  color: var(--color-primary);
+}
+.menu__grid {
+  display: grid;
+  gap: 30px;
+}
+@media (min-width: 768px) {
+  .menu__grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+.menu__item {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-left: 6px solid var(--color-primary); /* motif */
+}
+.menu__item h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5em;
+}
+.menu__item p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* reasons セクション */
+.reasons {
+  background-color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+.reasons::after { /* curve motif */
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: color-mix(in srgb, var(--color-surface) 80%, white);
+  clip-path: ellipse(150% 100% at 50% 100%);
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .reasons::after {
+    height: 180px;
+  }
+}
+.reasons__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .reasons__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+.reasons__image img {
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.reasons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.reasons__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.reasons__item-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+  color: var(--color-accent);
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+  position: relative;
+  top: -5px;
+}
+.reasons__item-content h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.3em;
+}
+.reasons__item-content p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* doctor セクション */
+.doctor {
+  background-color: color-mix(in srgb, var(--color-surface) 80%, white);
+  padding-top: 60px; /* Adjust for reasons curve */
+}
+.doctor__inner {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .doctor__inner {
+    grid-template-columns: 1fr 1.5fr; /* 非対称レイアウト */
+    gap: 80px;
+  }
+}
+.doctor__image {
+  text-align: center;
+}
+.doctor__image img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 50%; /* motif: curve */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+.doctor__info h2 {
+  color: var(--color-primary);
+  margin-bottom: 1em;
+}
+.doctor__info h3 {
+  font-size: clamp(1.3rem, 2vw + 0.8rem, 1.8rem);
+  color: var(--color-accent);
+  margin-bottom: 0.5em;
+}
+.doctor__info p {
+  margin-bottom: 1em;
+}
+.doctor__info ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5em;
+}
+.doctor__info li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.95rem;
+}
+.doctor__info li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-size: 0.8em;
+  line-height: 1.8;
+}
+
+/* voice セクション */
+.voice {
+  background-color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+.voice::after { /* curve motif */
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-primary);
+  clip-path: ellipse(150% 100% at 50% 100%);
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .voice::after {
+    height: 180px;
+  }
+}
+.voice__inner {
+  position: relative;
+  z-index: 2;
+}
+.voice h2 {
+  text-align: center;
+  margin-bottom: 2em;
+  color: var(--color-primary);
+}
+.voice__grid {
+  display: grid;
+  gap: 30px;
+}
+@media (min-width: 768px) {
+  .voice__grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .voice__grid > *:nth-child(even) {
+    margin-top: 40px; /* 非対称レイアウト */
+  }
+}
+.voice__item {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: calc(var(--radius) * 4); /* motif: より丸く */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+.voice__item::before {
+  content: '“';
+  font-family: serif;
+  font-size: 4rem;
+  color: var(--color-accent);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  opacity: 0.3;
+  line-height: 1;
+}
+.voice__item p {
+  font-size: 0.95rem;
+  margin-bottom: 1em;
+  padding-top: 20px;
+}
+.voice__item-author {
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+/* access セクション */
+.access {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding-top: 60px; /* Adjust for voice curve */
+}
+.access__inner {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .access__inner {
+    grid-template-columns: 1.2fr 1fr; /* 非対称レイアウト */
+    gap: 80px;
+  }
+}
+.access h2 {
+  color: #fff;
+  margin-bottom: 1em;
+}
+.access__info p {
+  margin-bottom: 1.5em;
+}
+.access__info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2em;
+}
+.access__info li {
+  margin-bottom: 0.8em;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.access__info li strong {
+  flex-shrink: 0;
+  width: 6em;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+.access__map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.access__map a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* cta セクション */
+.cta {
+  background-color: var(--color-primary);
+  padding-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cta::before { /* curve motif */
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-surface);
+  clip-path: ellipse(150% 100% at 50% 0%);
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .cta::before {
+    height: 180px;
+  }
+}
+.cta__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background-color: #fff;
+  padding: 60px 30px;
+  border-radius: calc(var(--radius) * 8); /* motif: 大きな丸み */
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin-inline: auto;
+}
+.cta h2 {
+  color: var(--color-primary);
+  margin-bottom: 0.8em;
+}
+.cta p {
+  color: var(--color-text);
+  margin-bottom: 2em;
+}
+.cta .c-btn {
+  font-size: 1.1rem;
+  padding: 16px 40px;
+  min-height: 60px;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+.cta .c-btn:hover {
+  background-color: color-mix(in srgb, var(--color-accent) 80%, white);
+}
+
+/* フッター */
+.site-footer {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.site-footer p {
+  margin: 0;
+  font-size: inherit;
+}
+</style>
+<style>:root{--color-primary:#6B8E6A;--color-accent:#E09F7D;--color-surface:#F7F4EB;--color-text:#3A332B;--font-heading:'Kosugi Maru', sans-serif;--font-body:'Noto Sans JP', sans-serif;--radius:4px;}</style>
+</head>
+<body>
+  <h1 class="sr-only">ユナイテッド豊島ワンニャン動物病院</h1>
+
+  <header class="site-header">
+    <a href="#" class="site-logo">ユナイテッド豊島ワンニャン動物病院</a>
+    <button class="c-hamburger js-nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="メニューを開閉">
+      <span class="c-hamburger__bars"></span>
+    </button>
+    <nav id="nav" class="c-nav">
+      <a href="#hero">トップ</a>
+      <a href="#problem">お悩み</a>
+      <a href="#menu">診療内容</a>
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#doctor">院長紹介</a>
+      <a href="#voice">飼い主様の声</a>
+      <a href="#access">アクセス</a>
+      <a href="#cta">ご予約</a>
+    </nav>
+  </header>
+
+  <main>
+    <section data-section="hero" class="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <h1>
+          豊島ワンニャン<br>
+          やさしい時間
+        </h1>
+        <p>
+          豊島区に暮らす大切な家族、ワンちゃん・ネコちゃんが<br>
+          いつでも安心して訪れられる、地域に根ざした動物病院です。<br>
+          温かいケアで、皆様の毎日をサポートします。
+        </p>
+        <div class="hero__cta">
+          <a href="#cta" class="c-btn">ご予約・お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="problem" class="problem">
+      <div class="l-wrapper problem__inner">
+        <div class="problem__text">
+          <h2>
+            こんなお悩みありませんか？
+          </h2>
+          <p>
+            大切な家族の一員であるワンちゃん、ネコちゃんのこと。<br>
+            ちょっとした変化でも心配になりますよね。<br>
+            当院は、そんな飼い主様の不安に寄り添い、丁寧な診療を心がけています。
+          </p>
+        </div>
+        <ul class="problem__list">
+          <li class="problem__item">
+            <p>最近、食欲がない、元気がない</p>
+          </li>
+          <li class="problem__item">
+            <p>皮膚の痒みやフケが気になる</p>
+          </li>
+          <li class="problem__item">
+            <p>ワクチン接種や健康診断の時期が知りたい</p>
+          </li>
+          <li class="problem__item">
+            <p>初めてペットを飼うので相談したい</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section data-section="menu" class="menu">
+      <div class="l-wrapper menu__inner">
+        <h2>診療内容</h2>
+        <div class="menu__grid">
+          <div class="menu__item">
+            <h3>一般診療</h3>
+            <p>
+              内科・外科全般に対応し、病気の早期発見・早期治療に努めます。
+              丁寧な問診と検査で、ペットの状態を正確に把握し、最適な治療法をご提案します。
+            </p>
+          </div>
+          <div class="menu__item">
+            <h3>予防医療</h3>
+            <p>
+              ワクチン接種、フィラリア予防、ノミ・ダニ予防など、
+              病気からペットを守るための予防プログラムをご案内します。
+              健康寿命を延ばすお手伝いをいたします。
+            </p>
+          </div>
+          <div class="menu__item">
+            <h3>健康診断</h3>
+            <p>
+              定期的な健康チェックは、病気の早期発見に繋がります。
+              年齢や種類に応じた検査項目で、ペットの健康状態を総合的に評価します。
+            </p>
+          </div>
+          <div class="menu__item">
+            <h3>避妊・去勢手術</h3>
+            <p>
+              望まない妊娠を防ぎ、特定の病気のリスクを軽減するための手術です。
+              手術前後のケアも含め、安心して任せていただける体制を整えています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="reasons" class="reasons">
+      <div class="l-wrapper reasons__inner">
+        <div class="reasons__image">
+          <img src="https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHwzZXRlcmluYXJpYW4lMjBnZW50bGUlMjBwZXQlMjBleGFtaW5hdGlvbnxlbnwwfDB8fHwxNzg0NDU3NjI2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="獣医が優しく犬を診察している様子">
+        </div>
+        <div class="reasons__content">
+          <h2>
+            ユナイテッド豊島ワンニャン動物病院が<br>
+            選ばれる3つの理由
+          </h2>
+          <ul class="reasons__list">
+            <li class="reasons__item">
+              <span class="reasons__item-number">01</span>
+              <div class="reasons__item-content">
+                <h3>犬と猫に特化した専門医療</h3>
+                <p>
+                  ワンちゃん・ネコちゃんの特性を深く理解した専門的な診療を提供。
+                  それぞれの動物に最適なケアを心がけています。
+                </p>
+              </div>
+            </li>
+            <li class="reasons__item">
+              <span class="reasons__item-number">02</span>
+              <div class="reasons__item-content">
+                <h3>地域に寄り添う親身な対応</h3>
+                <p>
+                  豊島区の皆様に信頼される「かかりつけ医」として、
+                  どんな小さなご相談にも親身に対応いたします。
+                </p>
+              </div>
+            </li>
+            <li class="reasons__item">
+              <span class="reasons__item-number">03</span>
+              <div class="reasons__item-content">
+                <h3>温かく安心できる空間</h3>
+                <p>
+                  来院するペットと飼い主様がリラックスできるよう、
+                  明るく清潔で温かい雰囲気の病院づくりをしています。
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="doctor" class="doctor">
+      <div class="l-wrapper doctor__inner">
+        <div class="doctor__image">
+          <img src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHx2ZXRlcmluYXJpYW4lMjBnZW50bGUlMjBwZXQlMjBleGFtaW9uZHxlbnwwfDB8fHwxNzg0NDU3NjI2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="笑顔の獣医師のポートレート">
+        </div>
+        <div class="doctor__info">
+          <h2>院長紹介</h2>
+          <h3>院長 豊島 太郎</h3>
+          <p>
+            この豊島区で生まれ育ち、地域の動物たちと共に歩んできました。
+            「ワンニャン」の名の通り、犬と猫の健康と幸せを第一に考え、
+            飼い主様が安心して相談できる温かい動物病院を目指しています。
+            どんな小さなことでも、お気軽にご相談ください。
+          </p>
+          <ul>
+            <li>日本獣医生命科学大学 獣医学部 卒業</li>
+            <li>都内動物病院勤務を経て、当院を開設</li>
+            <li>日本獣医皮膚科学会 会員</li>
+            <li>趣味：愛犬との散歩、地域猫活動</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="voice" class="voice">
+      <div class="l-wrapper voice__inner">
+        <h2>飼い主様の声</h2>
+        <div class="voice__grid">
+          <div class="voice__item">
+            <p>
+              いつも笑顔で迎えてくださり、うちの子も安心して通っています。
+              先生もスタッフの方々もとても優しく、質問にも丁寧に答えてくれるので、
+              些細なことでも相談しやすいです。本当に感謝しています。
+            </p>
+            <div class="voice__item-author">豊島区在住 M.K様（トイプードル飼い主）</div>
+          </div>
+          <div class="voice__item">
+            <p>
+              初めての猫で不安だらけでしたが、ワクチンからフードのことまで、
+              親身にアドバイスをいただきました。病院嫌いだったうちの猫も、
+              今ではすっかり慣れて、安心して診察を受けています。
+            </p>
+            <div class="voice__item-author">豊島区在住 S.T様（保護猫飼い主）</div>
+          </div>
+          <div class="voice__item">
+            <p>
+              急な体調不良で診ていただいた際も、迅速かつ的確に対応していただき、
+              本当に助かりました。説明も分かりやすく、今後のケアについても
+              丁寧に教えていただけたので、とても安心できました。
+            </p>
+            <div class="voice__item-author">豊島区在住 Y.H様（柴犬飼い主）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="access" class="access">
+      <div class="l-wrapper access__inner">
+        <div class="access__info">
+          <h2>アクセス</h2>
+          <p>
+            ユナイテッド豊島ワンニャン動物病院は、豊島区南大塚にございます。
+            駅からも近く、お散歩ついでにもお立ち寄りいただけます。
+          </p>
+          <ul>
+            <li><strong>住所</strong><span>東京都豊島区南大塚３丁目４３−５ ウィルテラス南大塚 202</span></li>
+            <li><strong>電話番号</strong><a href="tel:0353961212">03-5396-1212</a></li>
+            <li><strong>診療時間</strong><span>月～土 9:00～12:00 / 16:00～19:00</span></li>
+            <li><strong>休診日</strong><span>日曜・祝日</span></li>
+          </ul>
+        </div>
+        <div class="access__map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.544710156711!2d139.7289543!3d35.7285608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d6b9d1e389b%3A0x66f6f1c4a0e1b6f0!2z44CSMTcwLTAwMDQg5p2x5Lqs6YO95a6u5Z-O5Lya5bqD77yR5LiB55uu77yR77yR77yR5LiB55uuIOOCsOODh-OCreOCteODiOODkeOCu-ODoeOCu-ODq-ODiOODkOODqw!5e0!3m2!1sja!2sjp!4v1678901234567!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a href="#" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="cta" class="cta">
+      <div class="l-wrapper cta__inner">
+        <h2>ご予約・お問い合わせはこちら</h2>
+        <p>
+          大切なご家族の健康のために、まずはお気軽にご連絡ください。<br>
+          スタッフ一同、心よりお待ちしております。
+        </p>
+        <a href="tel:0353961212" class="c-btn">03-5396-1212 に電話をかける</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="y"></span> ユナイテッド豊島ワンニャン動物病院</p>
+  </footer>
+
+  <div class="c-floating-cta">
+    <a href="tel:0353961212" class="c-btn">電話で予約する</a>
+  </div>
+<script>
+/* nav.js — 全画面ハンバーガーの開閉（背後スクロールロック）。全デモ共通の不変挙動。 */
+(function () {
+  var t = document.querySelector('.js-nav-toggle');
+  var n = document.getElementById('nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', String(!open));
+      n.classList.toggle('is-open', !open);
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; } });
+  }
+  var y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+
+  /* スクロールリビール（抑制的モーション）：各 data-section の直下要素を
+     ふわっと表示。クラスはJSで付与するのでJS無効環境では常に見える。
+     prefers-reduced-motion は base.css 側の全体無効化が効く。 */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-inview'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-section]').forEach(function (sec) {
+      var kids = Array.prototype.slice.call(sec.children);
+      kids.forEach(function (el, i) {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        io.observe(el);
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
